@@ -1,0 +1,384 @@
+%% Esser Ben Ahmed -- CV
+%% Target: Developer role, quantitative research environment (Tunisia)
+%% Compile with pdfLaTeX (Overleaf: Menu > Compiler > pdfLaTeX)
+%%
+%% NOTHING IN THIS DOCUMENT IS INVENTED. Every line traces to something you
+%% told me or that was already on your CV. Lines marked "% FILL IN" are blanks
+%% you must complete yourself -- do not ship the CV with them still commented.
+
+\documentclass[10pt, letterpaper]{article}
+
+% ---------------------------------------------------------------- packages --
+\usepackage[
+    ignoreheadfoot,
+    top=1.6 cm,
+    bottom=1.6 cm,
+    left=1.6 cm,
+    right=1.6 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 0, 0}
+\usepackage{enumitem}
+\usepackage{etoolbox}      % <-- REQUIRED by \AtBeginEnvironment (missing in your original)
+\usepackage[
+    pdftitle={Esser Ben Ahmed - CV},
+    pdfauthor={Esser Ben Ahmed},
+    pdfsubject={Software Developer},
+    pdfkeywords={Software Developer, Python, Java, SQL, Spring Boot, React,
+                 REST API, WebSocket, MySQL, Data Pipeline, Power BI, Machine Learning,
+                 Git, Jira, Quantitative Research, Backend Developer},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage{calc}
+\usepackage{changepage} % adjustwidth (one column entries)
+\usepackage{paracol}    % two column entries
+\usepackage{needspace}  % avoid a page break right after a section title
+\usepackage{iftex}
+
+% Make the generated PDF machine readable / ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% ---------------------------------------------------------------- settings --
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0.15cm}
+\pagenumbering{gobble}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+}
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{0 cm + 0.00001 cm}{0 cm + 0.00001 cm}
+}{
+    \end{adjustwidth}
+}
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+}
+
+\let\hrefWithoutArrow\href
+
+% ---------------------------------------------------------------- document --
+\begin{document}
+
+\newcommand{\AND}{\unskip
+    \cleaders\copy\ANDbox\hskip\wd\ANDbox
+    \ignorespaces
+}
+\newsavebox\ANDbox
+\sbox\ANDbox{$|$}
+
+% ================================================================== HEADER ==
+\begin{header}
+    \fontsize{25 pt}{25 pt}\selectfont Esser Ben Ahmed
+
+    \vspace{2 pt}
+
+    {\normalsize Software Developer}
+
+    \vspace{4 pt}
+
+    \normalsize
+    \mbox{Ariana, Tunisia}%
+    \kern 5.0 pt%
+    \AND%
+    \kern 5.0 pt%
+    \mbox{\hrefWithoutArrow{mailto:benahmedesser@gmail.com}{benahmedesser@gmail.com}}%
+    \kern 5.0 pt%
+    \AND%
+    \kern 5.0 pt%
+    \mbox{\hrefWithoutArrow{tel:+216-25-40-33-66}{+216 25 403 366}}%
+    \kern 5.0 pt%
+    \AND%
+    \kern 5.0 pt%
+    \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/esser-ben-ahmed/}{linkedin.com/in/esser-ben-ahmed}}%
+    \kern 5.0 pt%
+    \AND%
+    \kern 5.0 pt%
+    \mbox{\hrefWithoutArrow{https://github.com/1Esser1}{github.com/1Esser1}}%
+    % FILL IN once your portfolio is deployed, then uncomment:
+    % \kern 5.0 pt%
+    % \AND%
+    % \kern 5.0 pt%
+    % \mbox{\hrefWithoutArrow{https://YOUR-URL-HERE}{esserbenahmed.dev}}%
+\end{header}
+
+\vspace{5 pt - 0.3 cm}
+
+% ================================================================= SUMMARY ==
+\section{Professional Summary}
+
+\begin{onecolentry}
+    Full-stack developer who built Nexus single-handedly over a six-month end-of-studies
+    internship at Attijari Bank: a React 19 front end on a Spring Boot 3 REST and WebSocket
+    API, backed by a MySQL/JPA model, JWT security and Jira/GitLab integrations.
+    At TimSoft I integrated machine-learning models to add predictive features to the product
+    and built dashboards covering 10+ key performance indicators from scratch.
+    Earlier, at Catharsis Consulting, I centralised fragmented conference data into a single
+    Python and Power BI reporting system that event planning ran on. I am looking for a
+    developer role building the data and platform tooling that research teams depend on.
+\end{onecolentry}
+
+% ================================================================== SKILLS ==
+\section{Technical Skills}
+
+\begin{onecolentry}
+    \textbf{Languages:} Python, Java, SQL, JavaScript, C, C\#
+\end{onecolentry}
+
+\vspace{0.15 cm}
+
+\begin{onecolentry}
+    \textbf{Back End:} Spring Boot 3, Spring Security (JWT), .NET, REST APIs,
+    WebSocket/STOMP
+\end{onecolentry}
+
+\vspace{0.15 cm}
+
+\begin{onecolentry}
+    \textbf{Data \& Analytics:} Power BI, data modelling, ETL/aggregation pipelines,
+    KPI and metric design, machine-learning model integration
+\end{onecolentry}
+
+\vspace{0.15 cm}
+
+\begin{onecolentry}
+    \textbf{Databases:} MySQL, Microsoft SQL Server, JPA/Hibernate
+\end{onecolentry}
+
+\vspace{0.15 cm}
+
+\begin{onecolentry}
+    \textbf{Front End:} React 19, Vite, HTML/CSS
+\end{onecolentry}
+
+\vspace{0.15 cm}
+
+\begin{onecolentry}
+    \textbf{Tools:} Git, GitHub, GitLab, Jira, Google Apps Script, OAuth 2.0
+\end{onecolentry}
+
+% FILL IN -- only if genuinely true, and be ready to be questioned on it:
+% \vspace{0.15 cm}
+% \begin{onecolentry}
+%     \textbf{Mathematics:} probability, statistics, linear algebra (preparatory cycle coursework)
+% \end{onecolentry}
+
+% ============================================================== EXPERIENCE ==
+\section{Professional Experience}
+
+\begin{twocolentry}{Feb 2026 -- Jul 2026}
+    \textbf{End-of-Studies Intern (PFE), Full-Stack Developer}, Attijari Bank -- Tunisia
+\end{twocolentry}
+
+\vspace{0.10 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Designed and built \textbf{Nexus} end to end as the sole developer: a React 19
+              single-page application on a Spring Boot 3 REST API, a real-time WebSocket/STOMP
+              layer, and a MySQL domain model accessed through JPA.
+        \item Implemented automated work scoring (RICE, MoSCoW, Kano) behind a
+              provider-agnostic service layer, so the same feature runs against cloud LLM APIs
+              (Groq, Gemini, Mistral) or a self-hosted Ollama model with no vendor lock-in.
+        \item Built the analytics layer computing DORA delivery metrics -- lead time,
+              deployment frequency, change-failure rate and MTTR -- alongside per-project KPIs
+              for velocity, cycle time and on-time delivery, derived from live application data.
+        \item Secured the platform with stateless JWT authentication, BCrypt-hashed credentials
+              and role-based access control across six roles; admin password resets never expose
+              plaintext.
+        \item Integrated GitHub/GitLab via OAuth with a manager push-approval workflow, and
+              synchronised each project to its own Jira board.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{Jun 2025 -- Aug 2025}
+    \textbf{Data and Machine Learning Developer Intern}, TimSoft -- Tunisia
+\end{twocolentry}
+
+\vspace{0.10 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Built interactive dashboards from scratch to monitor and analyse 10+ key
+              performance indicators.
+        \item Integrated machine-learning models into the product to add predictive features on
+              top of existing reporting.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{Jun 2024 -- Aug 2024}
+    \textbf{Business Intelligence Engineer Intern}, Catharsis Consulting -- Tunisia
+\end{twocolentry}
+
+\vspace{0.10 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Developed a centralised data system in Python and Power BI, aggregating
+              conference data that had previously been scattered across separate sources.
+        \item Designed interactive dashboards tracking participant engagement, registration
+              trends and session popularity.
+        \item Delivered the analysis that event-planning decisions were made from.
+    \end{highlights}
+\end{onecolentry}
+
+% ================================================================ PROJECTS ==
+\section{Projects}
+
+\begin{twocolentry}{2023 -- 2025}
+    \textbf{AIESEC Recruitment Automation and Analytics} \textnormal{--- Google Apps Script,
+    Google Sheets, EXPA}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Automated candidate account creation in AIESEC's system the moment an attraction
+              form is submitted, removing a manual step from the recruitment funnel entirely.
+        \item Built dashboards over live EXPA data to analyse recruitment performance by
+              pipeline status.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{2025 -- Present}
+    \textbf{Freelance Management Platforms}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Building a role-based operations platform for an e-commerce business that tracks a
+              product across its full lifecycle: raw materials, suppliers, production and delivery.
+        \item OGX Search Hub for AIESEC in the UK, as Entity Support Team OGX Data Master:
+              centralised search across international-relations partners and opportunities.
+        % FILL IN -- add the stacks once you decide what to disclose, e.g.:
+        % \item Stack: React, Node.js, PostgreSQL.
+    \end{highlights}
+\end{onecolentry}
+
+% =============================================================== EDUCATION ==
+\section{Education}
+
+\begin{twocolentry}{Sept 2023 -- 2026}
+    \textbf{ESPRIT -- École Supérieure Privée d'Ingénierie et de Technologie}, Tunisia
+\end{twocolentry}
+
+\begin{onecolentry}
+    Bachelor's in Business Intelligence Engineering \textnormal{(final-year defense pending)}
+\end{onecolentry}
+
+\vspace{0.15 cm}
+
+\begin{twocolentry}{Dec 2021 -- Jun 2023}
+    \textbf{Université SESAME}, Tunisia
+\end{twocolentry}
+
+\begin{onecolentry}
+    Preparatory Cycle in Computer Science
+\end{onecolentry}
+
+\vspace{0.15 cm}
+
+\begin{twocolentry}{Sept 2021 -- Dec 2021}
+    \textbf{École Hexagone}, Paris, France
+\end{twocolentry}
+
+\begin{onecolentry}
+    Preparatory Cycle in Computer Science
+\end{onecolentry}
+
+% ============================================================== LEADERSHIP ==
+\section{Leadership and Extracurricular}
+
+\begin{twocolentry}{Oct 2022 -- Present}
+    \textbf{AIESEC}, Bardo, Tunisia
+\end{twocolentry}
+
+\vspace{0.10 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Head of Recruitment, OCVP and HR Manager: led 8+ teams and worked with 50+ people.
+        \item Organising committee for conferences at local, national and MEA regional level;
+              ran end-to-end recruitment campaigns for OCP.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.15 cm}
+
+\begin{twocolentry}{2020 -- 2023}
+    \textbf{Rotaract Club} \textnormal{and} \textbf{IEEE Computer Society}, Tunisia
+\end{twocolentry}
+
+\vspace{0.10 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Rotaract: joined as a member, became Head of Personal and Professional Development,
+              then Vice President of Human Resources; built training tracks in first aid,
+              marketing and design tools.
+        \item Treasurer of the IEEE Computer Society student branch; member of JCI, Microsoft
+              Student Club and ACM.
+    \end{highlights}
+\end{onecolentry}
+
+% =============================================================== LANGUAGES ==
+\section{Languages}
+
+\begin{onecolentry}
+    \textbf{Arabic:} Native \quad \textbf{English:} Advanced \quad \textbf{French:} Advanced
+\end{onecolentry}
+
+\end{document}
