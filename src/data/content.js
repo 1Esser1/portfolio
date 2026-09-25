@@ -176,6 +176,41 @@ export const projects = [
     ],
   },
   {
+    id: 'uk-dashboard',
+    name: 'AIESEC UK Dashboard',
+    tagline: 'OGX performance tracker — from spreadsheet to scoreboard',
+    context: 'AIESEC in the UK — national exchange operation',
+    role: 'Solo full-stack developer',
+    status: 'Live',
+    featured: false,
+    links: {
+      live: 'https://dashboard-uk.vercel.app/',
+      repo: 'https://github.com/1Esser1/UK-Dashboard',
+    },
+    demo: 'uk-dashboard',
+    summary:
+      "AIESEC UK's national exchange funnel lived in a 7,500-row Google Sheet. This dashboard turns it into a live scoreboard: SU → APL → ACC → APD → RE → CO, per Local Committee, per programme, per period — with national ranking and goal tracking for all 13 LCs.",
+    stack: ['React 19', 'TypeScript', 'Tailwind CSS', 'Recharts', 'Express', 'Prisma', 'Google Sheets API'],
+    detail: [
+      {
+        heading: 'What it shows',
+        points: [
+          'Overview: national totals with period-over-period growth and progress toward the national APD target.',
+          'National Ranking: every LC ranked across the whole funnel, sortable by stage, with a green → red rank-tier gradient.',
+          'LC Dashboard: rank badges and Plan / Done / %Ach / Prior / %GRW goal cards for each funnel stage, filterable by LC, month and programme.',
+        ],
+      },
+      {
+        heading: 'How it works',
+        points: [
+          'A Google Sheets sync service feeds a Prisma data model, so the dashboard updates as the team works in the sheet.',
+          'Express API with an admin login (JWT in an httpOnly cookie) and a sync-status page that can trigger a manual sync.',
+          'React + TypeScript front end with Recharts, deployed on Vercel.',
+        ],
+      },
+    ],
+  },
+  {
     id: 'aiesec-automation',
     name: 'AIESEC Attraction Automation & EXPA Analytics',
     tagline: 'Zero-touch sign-up pipeline + live recruitment dashboards',
@@ -278,6 +313,55 @@ export const projects = [
   },
 ]
 
+/**
+ * Demo videos (1–4 min). Drop the .mp4 + poster in /public/demos and flip
+ * `status` to 'ready'. Chapters are [seconds, label] and become seek buttons.
+ */
+export const demos = [
+  {
+    id: 'uk-dashboard',
+    project: 'AIESEC UK Dashboard',
+    title: 'From spreadsheet to scoreboard',
+    summary:
+      "A walk through the live OGX tracker: national totals, period and programme filters, the 13-LC ranking, and the per-LC view each team uses to check where they stand.",
+    status: 'ready',
+    src: '/demos/uk-dashboard.mp4',
+    poster: '/demos/uk-dashboard-poster.jpg',
+    duration: '1:43',
+    links: {
+      live: 'https://dashboard-uk.vercel.app/',
+      repo: 'https://github.com/1Esser1/UK-Dashboard',
+    },
+    chapters: [
+      [0, 'The problem'],
+      [13, 'Overview'],
+      [21, 'Period filters'],
+      [37, 'Programmes'],
+      [49, 'National ranking'],
+      [61, 'LC dashboard'],
+      [79, 'Live today'],
+    ],
+  },
+  {
+    id: 'nexus',
+    project: 'Nexus',
+    title: 'AI prioritisation, end to end',
+    summary:
+      'From a request coming in, to AI scoring with RICE · MoSCoW · Kano, to the generated plan, sprint board and DORA metrics.',
+    status: 'soon',
+    note: 'Walkthrough in production',
+  },
+  {
+    // TODO: name + one-line pitch for the upcoming project.
+    id: 'next',
+    project: 'Next project',
+    title: 'Something new is being built',
+    summary: 'The next build is underway. Its demo lands here when it ships.',
+    status: 'soon',
+    note: 'In development',
+  },
+]
+
 export const leadership = [
   {
     org: 'AIESEC',
@@ -300,6 +384,7 @@ export const leadership = [
     roles: ['OGX Data Master'],
     points: [
       "Responsible for the entity's data projects, including the OGX Search Hub covering every IR partner and opportunity.",
+      'Built the OGX performance dashboard that ranks all 13 Local Committees across the national exchange funnel.',
     ],
   },
   {
@@ -427,6 +512,7 @@ export const nav = [
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
+  { id: 'demos', label: 'Demos' },
   { id: 'skills', label: 'Skills' },
   { id: 'leadership', label: 'Leadership' },
   { id: 'education', label: 'Education' },

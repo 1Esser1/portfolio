@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import Icon from './Icons'
+import CountUp from './CountUp'
 import { profile } from '../data/content'
 
 /** Stages of the Nexus pipeline — the diagram in the hero panel. */
@@ -33,7 +34,70 @@ function RotatingRole() {
   )
 }
 
+/** Name split into letters that rise out of a mask, word by word. */
+function SplitName({ text }) {
+  let n = 0
+  return (
+    <h1 className="hero-name" aria-label={text}>
+      {text.split(' ').map((word, w) => (
+        <Fragment key={w}>
+          {w > 0 && ' '}
+          <span className="split-word" aria-hidden="true">
+            {[...word].map((ch, i) => (
+              <span key={i} className="split-char" style={{ '--c': n++ }}>
+                {ch}
+              </span>
+            ))}
+          </span>
+        </Fragment>
+      ))}
+    </h1>
+  )
+}
+
+/** Tilts the panel a few degrees toward the cursor. Fine pointers only. */
+function useTilt(max = 5) {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const el = ref.current
+    const ok =
+      window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!el || !ok) return
+
+    let frame = 0
+    const onMove = (e) => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        const r = el.getBoundingClientRect()
+        const x = (e.clientX - r.left) / r.width - 0.5
+        const y = (e.clientY - r.top) / r.height - 0.5
+        el.style.setProperty('--rx', `${(-y * max).toFixed(2)}deg`)
+        el.style.setProperty('--ry', `${(x * max).toFixed(2)}deg`)
+      })
+    }
+    const onLeave = () => {
+      cancelAnimationFrame(frame)
+      el.style.setProperty('--rx', '0deg')
+      el.style.setProperty('--ry', '0deg')
+    }
+
+    el.addEventListener('pointermove', onMove)
+    el.addEventListener('pointerleave', onLeave)
+    return () => {
+      cancelAnimationFrame(frame)
+      el.removeEventListener('pointermove', onMove)
+      el.removeEventListener('pointerleave', onLeave)
+    }
+  }, [max])
+
+  return ref
+}
+
 export default function Hero() {
+  const panelRef = useTilt()
+
   return (
     <section className="hero" id="top">
       <div className="hero-bg" aria-hidden="true">
@@ -60,7 +124,7 @@ export default function Hero() {
             </p>
           </div>
 
-          <h1 className="hero-name">{profile.name}</h1>
+          <SplitName text={profile.name} />
 
           <p className="hero-role">
             <RotatingRole />
@@ -107,7 +171,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-panel">
+        <div className="hero-panel" ref={panelRef}>
           <div className="panel">
             <div className="panel-bar">
               <span className="panel-dot" />
@@ -150,7 +214,9 @@ export default function Hero() {
         <ul className="hero-stats">
           {profile.stats.map((stat) => (
             <li key={stat.label}>
-              <strong className="gradient-text">{stat.value}</strong>
+              <strong className="gradient-text">
+                <CountUp value={stat.value} />
+              </strong>
               <span>{stat.label}</span>
             </li>
           ))}

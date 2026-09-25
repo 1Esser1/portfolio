@@ -3,11 +3,11 @@ import Icon from './Icons'
 import useReveal from '../hooks/useReveal'
 import { leadership } from '../data/content'
 
-function LeadershipCard({ entry }) {
+function LeadershipCard({ entry, index }) {
   const ref = useReveal()
 
   return (
-    <article className="card lead-card reveal" ref={ref}>
+    <article className="card lead-card reveal" ref={ref} style={{ '--d': index % 2 }}>
       <header className="lead-head">
         <div>
           <h3>{entry.org}</h3>
@@ -43,13 +43,13 @@ export default function Leadership() {
   return (
     <Section
       id="leadership"
-      eyebrow="05 / Leadership"
+      eyebrow="06 / Leadership"
       title="Six years of running teams, not just joining them"
       lead="Engineering gets you the solution. Recruitment, HR management and organising conferences at regional scale taught me how to get it adopted."
     >
       <div className="lead-grid">
-        {leadership.map((entry) => (
-          <LeadershipCard key={entry.org} entry={entry} />
+        {leadership.map((entry, i) => (
+          <LeadershipCard key={entry.org} entry={entry} index={i} />
         ))}
       </div>
     </Section>

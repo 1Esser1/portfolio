@@ -27,7 +27,7 @@
     pdfauthor={Esser Ben Ahmed},
     pdfsubject={Software Developer},
     pdfkeywords={Software Developer, Python, Java, SQL, Spring Boot, React,
-                 REST API, WebSocket, MySQL, Data Pipeline, Power BI, Machine Learning,
+                 TypeScript, Express, Prisma, REST API, WebSocket, MySQL, Data Pipeline, Power BI, Machine Learning,
                  Git, Jira, Quantitative Research, Backend Developer},
     colorlinks=true,
     urlcolor=primaryColor
@@ -157,22 +157,24 @@
     At TimSoft I integrated machine-learning models to add predictive features to the product
     and built dashboards covering 10+ key performance indicators from scratch.
     Earlier, at Catharsis Consulting, I centralised fragmented conference data into a single
-    Python and Power BI reporting system that event planning ran on. I am looking for a
-    developer role building the data and platform tooling that research teams depend on.
+    Python and Power BI reporting system that event planning ran on. Most recently I built
+    and deployed a live funnel dashboard for AIESEC UK's national exchange operation in
+    React, TypeScript and Express. I am looking for a developer role building the data and
+    platform tooling that research teams depend on.
 \end{onecolentry}
 
 % ================================================================== SKILLS ==
 \section{Technical Skills}
 
 \begin{onecolentry}
-    \textbf{Languages:} Python, Java, SQL, JavaScript, C, C\#
+    \textbf{Languages:} Python, Java, SQL, JavaScript, TypeScript, C, C\#
 \end{onecolentry}
 
 \vspace{0.15 cm}
 
 \begin{onecolentry}
-    \textbf{Back End:} Spring Boot 3, Spring Security (JWT), .NET, REST APIs,
-    WebSocket/STOMP
+    \textbf{Back End:} Spring Boot 3, Spring Security (JWT), Express, Prisma ORM, .NET,
+    REST APIs, WebSocket/STOMP
 \end{onecolentry}
 
 \vspace{0.15 cm}
@@ -191,13 +193,14 @@
 \vspace{0.15 cm}
 
 \begin{onecolentry}
-    \textbf{Front End:} React 19, Vite, HTML/CSS
+    \textbf{Front End:} React 19, Vite, Tailwind CSS, Recharts, HTML/CSS
 \end{onecolentry}
 
 \vspace{0.15 cm}
 
 \begin{onecolentry}
-    \textbf{Tools:} Git, GitHub, GitLab, Jira, Google Apps Script, OAuth 2.0
+    \textbf{Tools:} Git, GitHub, GitLab, Jira, Google Apps Script, Google Sheets API,
+    OAuth 2.0, Vercel
 \end{onecolentry}
 
 % FILL IN -- only if genuinely true, and be ready to be questioned on it:
@@ -271,6 +274,32 @@
 
 % ================================================================ PROJECTS ==
 \section{Projects}
+
+% CHECK the date: set the real start month, e.g. "Aug 2026 -- Present".
+\begin{twocolentry}{2026 -- Present}
+    \textbf{AIESEC UK Dashboard} \textnormal{--- React, TypeScript, Express, Prisma,
+    Google Sheets API}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+
+\begin{onecolentry}
+    \begin{highlights}
+        \item Built solo a live performance tracker for AIESEC UK's national exchange operation,
+              turning a 7,500-row Google Sheet into a funnel dashboard
+              (SU $\rightarrow$ APL $\rightarrow$ ACC $\rightarrow$ APD $\rightarrow$ RE
+              $\rightarrow$ CO) for all 13 Local Committees.
+        \item Wrote a Google Sheets sync service feeding a Prisma data model behind an Express
+              API, with admin access secured by JWT in an httpOnly cookie.
+        \item Shipped national ranking, period-over-period growth and goal-tracking views, deployed
+              on Vercel:
+              \hrefWithoutArrow{https://dashboard-uk.vercel.app}{\underline{live app}},
+              \hrefWithoutArrow{https://github.com/1Esser1/UK-Dashboard}{\underline{source}},
+              \hrefWithoutArrow{https://esserbenahmed.vercel.app/\#demos}{\underline{video demo}}.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
 
 \begin{twocolentry}{2023 -- 2025}
     \textbf{AIESEC Recruitment Automation and Analytics} \textnormal{--- Google Apps Script,

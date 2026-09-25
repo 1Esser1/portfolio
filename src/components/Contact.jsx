@@ -52,7 +52,7 @@ export default function Contact() {
         <div className="contact-card reveal" ref={ref}>
           <div className="contact-glow" aria-hidden="true" />
 
-          <p className="eyebrow">07 / Contact</p>
+          <p className="eyebrow">08 / Contact</p>
           <h2 className="contact-title">
             I'm looking for my first role.
             <br />

@@ -33,3 +33,6 @@ cv/*.fdb_latexmk
 *.njsproj
 *.sln
 *.sw?
+
+# Browser QA screenshots
+.playwright-mcp

@@ -1,9 +1,19 @@
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Icon from './Icons'
+
+/** Exit runs ~65% of the enter duration, then the parent unmounts us. */
+const EXIT_MS = 200
 
 export default function ProjectModal({ project, onClose }) {
   const closeRef = useRef(null)
   const previouslyFocused = useRef(null)
+  const [closing, setClosing] = useState(false)
+
+  const requestClose = useCallback(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return onClose()
+    setClosing(true)
+    setTimeout(onClose, EXIT_MS)
+  }, [onClose])
 
   useEffect(() => {
     if (!project) return
@@ -13,7 +23,7 @@ export default function ProjectModal({ project, onClose }) {
     document.body.classList.add('is-locked')
 
     const onKey = (e) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') requestClose()
     }
 
     window.addEventListener('keydown', onKey)
@@ -22,14 +32,14 @@ export default function ProjectModal({ project, onClose }) {
       document.body.classList.remove('is-locked')
       previouslyFocused.current?.focus?.()
     }
-  }, [project, onClose])
+  }, [project, requestClose])
 
   if (!project) return null
 
   return (
     <div
-      className="modal-backdrop"
-      onClick={onClose}
+      className={`modal-backdrop ${closing ? 'is-closing' : ''}`}
+      onClick={requestClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-modal-title"
@@ -39,7 +49,7 @@ export default function ProjectModal({ project, onClose }) {
           ref={closeRef}
           type="button"
           className="icon-btn modal-close"
-          onClick={onClose}
+          onClick={requestClose}
           aria-label="Close project details"
         >
           <Icon name="close" size={20} />
@@ -60,6 +70,23 @@ export default function ProjectModal({ project, onClose }) {
               <dd>{project.role}</dd>
             </div>
           </dl>
+
+          {project.links && (
+            <div className="modal-links">
+              {project.links.live && (
+                <a className="btn btn-primary btn-sm" href={project.links.live} target="_blank" rel="noreferrer">
+                  <Icon name="globe" size={15} />
+                  Open live app
+                </a>
+              )}
+              {project.links.repo && (
+                <a className="btn btn-ghost btn-sm" href={project.links.repo} target="_blank" rel="noreferrer">
+                  <Icon name="github" size={15} />
+                  Source code
+                </a>
+              )}
+            </div>
+          )}
 
           {project.stack.length > 0 && (
             <div className="tag-list">

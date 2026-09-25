@@ -71,9 +71,9 @@ export default function About() {
           </div>
         </div>
 
-        <div className="about-grid reveal" ref={gridRef}>
-          {focusAreas.map((area) => (
-            <article key={area.title} className="card focus-card">
+        <div className="about-grid reveal-stagger" ref={gridRef}>
+          {focusAreas.map((area, i) => (
+            <article key={area.title} className="card focus-card" style={{ '--i': i }}>
               <span className="focus-icon">
                 <Icon name={area.icon} size={20} />
               </span>

@@ -53,6 +53,8 @@ function ExperienceItem({ job }) {
 }
 
 export default function Experience() {
+  const lineRef = useReveal({ threshold: 0.05 })
+
   return (
     <Section
       id="experience"
@@ -60,7 +62,7 @@ export default function Experience() {
       title="Three internships, three different angles on data"
       lead="From centralising reporting, to shipping ML-backed dashboards, to building a full decision platform for a bank's IT department."
     >
-      <ol className="timeline">
+      <ol className="timeline reveal-line" ref={lineRef}>
         {experience.map((job) => (
           <ExperienceItem key={`${job.company}-${job.role}`} job={job} />
         ))}

@@ -369,15 +369,33 @@ h4 {
 
 /* ─── Scroll reveal ──────────────────────────────────────────────────────── */
 
+/* Keyframes with `backwards` fill (not a transition) so the per-item stagger
+   delay (--d) never leaks into hover transforms once the item has landed. */
 .reveal {
   opacity: 0;
   transform: translateY(26px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+  animation: reveal-in 0.75s var(--ease) calc(var(--d, 0) * 80ms) backwards;
+}
+
+/* Parent reveals, children rise one after another (--i per child). */
+:where(.reveal-stagger:not(.is-visible)) > * {
+  opacity: 0;
+}
+
+.reveal-stagger.is-visible > * {
+  animation: reveal-in 0.7s var(--ease) calc(var(--i, 0) * 70ms) backwards;
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
 }
 
 /* ─── Animations ─────────────────────────────────────────────────────────── */
@@ -446,8 +464,13 @@ h4 {
     transition-duration: 0.01ms !important;
   }
 
-  .reveal {
+  .reveal,
+  :where(.reveal-stagger:not(.is-visible)) > * {
     opacity: 1;
     transform: none;
+  }
+
+  .split-char {
+    transform: none !important;
   }
 }

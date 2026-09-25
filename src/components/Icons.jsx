@@ -147,9 +147,23 @@ const paths = {
       <path d="M15 9V5.4A2.4 2.4 0 0 0 12.6 3H5.4A2.4 2.4 0 0 0 3 5.4v7.2A2.4 2.4 0 0 0 5.4 15H9" />
     </>
   ),
+  play: <path d="M7 4.8v14.4a1 1 0 0 0 1.5.9l11.6-7.2a1 1 0 0 0 0-1.8L8.5 3.9A1 1 0 0 0 7 4.8Z" />,
+  film: (
+    <>
+      <rect x="3" y="4" width="18" height="16" rx="2.6" />
+      <path d="M7.5 4v16M16.5 4v16M3 9h4.5M3 15h4.5M16.5 9H21M16.5 15H21" />
+    </>
+  ),
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+    </>
+  ),
+  arrowUp: <path d="M12 19V5M5.5 11.5 12 5l6.5 6.5" />,
 }
 
-const filledIcons = new Set(['github', 'linkedin'])
+const filledIcons = new Set(['github', 'linkedin', 'play'])
 
 export default function Icon({ name, size = 20, className = '', ...rest }) {
   const content = paths[name]

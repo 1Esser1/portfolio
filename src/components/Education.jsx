@@ -25,7 +25,7 @@ export default function Education() {
   return (
     <Section
       id="education"
-      eyebrow="06 / Education"
+      eyebrow="07 / Education"
       title="Academic background"
       lead="An engineering track in Business Intelligence, built on two preparatory cycles in computer science."
     >
