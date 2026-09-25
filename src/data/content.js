@@ -321,6 +321,30 @@ export const projects = [
  */
 export const demos = [
   {
+    id: 'nexus',
+    project: 'Nexus',
+    title: 'One platform for the whole IT department',
+    summary:
+      "The full tour of Attijari Bank's IT platform: requests scored by AI, work split into subtasks, Jira and GitHub kept in sync behind a manager's approval, and DORA metrics for every team, in three languages.",
+    status: 'ready',
+    src: '/demos/nexus.mp4',
+    poster: '/demos/nexus-poster.jpg',
+    duration: '3:17',
+    chapters: [
+      [0, 'Intro'],
+      [15.5, 'People & teams'],
+      [31.5, 'Every request, scored'],
+      [51.9, 'Assign, then build'],
+      [72.3, 'Jira, in sync'],
+      [88.3, 'GitHub, with approval'],
+      [104.3, 'The flow of work'],
+      [120.3, 'Working together'],
+      [136.3, 'Measure what matters'],
+      [152.3, 'Nothing is lost'],
+      [160.3, 'Every day'],
+    ],
+  },
+  {
     id: 'uk-dashboard',
     project: 'AIESEC UK Dashboard',
     title: 'From spreadsheet to scoreboard',
@@ -343,15 +367,6 @@ export const demos = [
       [61, 'LC dashboard'],
       [79, 'Live today'],
     ],
-  },
-  {
-    id: 'nexus',
-    project: 'Nexus',
-    title: 'AI prioritisation, end to end',
-    summary:
-      'From a request coming in, to AI scoring with RICE · MoSCoW · Kano, to the generated plan, sprint board and DORA metrics.',
-    status: 'soon',
-    note: 'Walkthrough in production',
   },
   {
     // TODO: name + one-line pitch for the upcoming project.
