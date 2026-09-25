@@ -12,6 +12,8 @@ export const profile = {
   name: 'Esser Ben Ahmed',
   initials: 'EB',
   title: 'Business Intelligence & ERP Engineer',
+  // Short form for the nav bar, where the full title collides with the links.
+  shortTitle: 'ERP-BI Engineer',
   // Rotates under the name in the hero.
   roles: [
     'Business Intelligence Engineer',

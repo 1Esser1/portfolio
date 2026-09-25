@@ -35,7 +35,7 @@ export default function Nav({ theme, onToggleTheme }) {
           <span className="nav-mark">{profile.initials}</span>
           <span className="nav-brand-text">
             <strong>{profile.name}</strong>
-            <span>{profile.title}</span>
+            <span>{profile.shortTitle}</span>
           </span>
         </a>
 

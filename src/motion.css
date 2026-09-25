@@ -769,16 +769,14 @@
   flex-shrink: 0;
 }
 
-/* Eight nav links since Demos joined: keep the bar on one line. */
+/* Eight nav links since Demos joined: keep the bar on one line. The brand
+   never shrinks, so its text can't slide under the links. */
+.nav-brand,
 .nav-actions {
   flex-shrink: 0;
 }
 
 @media (max-width: 1440px) {
-  .nav-brand-text span {
-    display: none;
-  }
-
   .nav-links a {
     padding-inline: 11px;
   }
